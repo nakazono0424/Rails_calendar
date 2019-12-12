@@ -1,5 +1,11 @@
 # README
 
+# 環境
+|||
+|:---|:---|
+|Ruby|2.6.5|
+|Rails|5.2.4|
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
