@@ -1,0 +1,2736 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+Migrating to CreateEvents (20191209035218)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "start_time" datetime, "place" varchar, "check" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20191209035218_create_events.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191209035218"]]
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-09 03:52:27.748987"], ["updated_at", "2019-12-09 03:52:27.748987"]]
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/nakazono/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rake-13.0.1/lib/rake/task.rb:281
+Started GET "/events" for ::1 at 2019-12-09 12:52:38 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered events/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 1435ms (Views: 1404.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 12:52:44 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (69.5ms)
+  Rendered events/new.html.erb within layouts/application (73.4ms)
+Completed 200 OK in 200ms (Views: 139.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 12:52:52 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vv+E+Jw8Fy5WW5zTxrtMaGyja7+FO0sXzMGii/XTa7nKuyz979UGcVzSGRO2LsrviuypW9JhQ3asrtcz4L+75Q==", "event"=>{"name"=>"test", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"03", "start_time(5i)"=>"52", "place"=>"a", "check"=>"1"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:30
+  [1m[36mEvent Create (0.9ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "test"], ["start_time", "2019-12-09 03:52:00"], ["place", "a"], ["check", 1], ["created_at", "2019-12-09 03:52:52.852057"], ["updated_at", "2019-12-09 03:52:52.852057"]]
+  ↳ app/controllers/events_controller.rb:30
+  [1m[35m (15.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:30
+Redirected to http://localhost:3000/events/1
+Completed 302 Found in 27ms (ActiveRecord: 16.0ms)
+
+
+Started GET "/events/1" for ::1 at 2019-12-09 12:52:52 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 53ms (Views: 40.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 12:52:55 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered events/index.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 12:56:56 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered events/index.html.erb within layouts/application (582.6ms)
+Completed 500 Internal Server Error in 598ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `month_calendar' for #<#<Class:0x000000000472d6a8>:0x00007fe194039f58>):
+    30: 
+    31: <br>
+    32: 
+    33: <%= month_calendar events: @events do |date, events| %>
+    34:   <%= date %>
+    35: 
+    36:   <% events.each do |event| %>
+  
+app/views/events/index.html.erb:33:in `_app_views_events_index_html_erb__1850659185246412469_70303413818360'
+Started GET "/events" for ::1 at 2019-12-09 12:57:31 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (15.5ms)
+  Rendered events/index.html.erb within layouts/application (72.4ms)
+Completed 200 OK in 893ms (Views: 863.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 12:58:13 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (8.4ms)
+  Rendered events/index.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 153ms (Views: 151.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 13:02:44 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (13.2ms)
+  Rendered events/index.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 76ms (Views: 74.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 13:02:50 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (55.6ms)
+  Rendered events/new.html.erb within layouts/application (57.3ms)
+Completed 200 OK in 151ms (Views: 136.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 13:02:56 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2frm/rhBsqVWR9ba1VeFc+fB+aiIM9Yt45WA2BnlBU6tvk77y6ij+lzOUxqlwgP0AY47TN9p3kyD+vVgDInVEg==", "event"=>{"name"=>"test2", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"04", "start_time(5i)"=>"02", "place"=>"b", "check"=>"0"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:30
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "test2"], ["start_time", "2019-12-09 04:02:00"], ["place", "b"], ["check", 0], ["created_at", "2019-12-09 04:02:56.821481"], ["updated_at", "2019-12-09 04:02:56.821481"]]
+  ↳ app/controllers/events_controller.rb:30
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:30
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 32ms (ActiveRecord: 11.9ms)
+
+
+Started GET "/events/2" for ::1 at 2019-12-09 13:02:56 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 70ms (Views: 62.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 13:02:58 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (29.6ms)
+  Rendered events/index.html.erb within layouts/application (42.2ms)
+Completed 200 OK in 131ms (Views: 128.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 13:04:03 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (91.3ms)
+  Rendered events/index.html.erb within layouts/application (115.1ms)
+Completed 200 OK in 169ms (Views: 167.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/1" for ::1 at 2019-12-09 13:04:05 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 60ms (Views: 58.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 13:04:11 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (34.5ms)
+  Rendered events/index.html.erb within layouts/application (57.6ms)
+Completed 200 OK in 101ms (Views: 100.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/1/edit" for ::1 at 2019-12-09 13:10:26 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (37.7ms)
+  Rendered events/edit.html.erb within layouts/application (41.3ms)
+Completed 200 OK in 91ms (Views: 84.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 13:15:50 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (27.6ms)
+  Rendered events/index.html.erb within layouts/application (45.9ms)
+Completed 200 OK in 94ms (Views: 91.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 14:22:50 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (32.5ms)
+  Rendered events/index.html.erb within layouts/application (63.5ms)
+Completed 200 OK in 148ms (Views: 134.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 14:22:57 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/views/events/new.html.erb:44: syntax error, unexpected end-of-input, expecting end):
+  
+app/views/events/new.html.erb:44: syntax error, unexpected end-of-input, expecting end
+Started GET "/events/new" for ::1 at 2019-12-09 14:24:17 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (1.9ms)
+  Rendered events/new.html.erb within layouts/application (17.2ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `errors' for nil:NilClass):
+    1: <%= form_with(model: event, local: true) do |form| %>
+    2:   <% if event.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    5: 
+  
+app/views/events/_form.html.erb:2:in `block in _app_views_events__form_html_erb__1324184281391484833_70107941007660'
+app/views/events/_form.html.erb:1:in `_app_views_events__form_html_erb__1324184281391484833_70107941007660'
+app/views/events/new.html.erb:3:in `_app_views_events_new_html_erb___513187180658167306_70107940700240'
+Started GET "/events/new" for ::1 at 2019-12-09 14:29:06 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (46.1ms)
+  Rendered events/new.html.erb within layouts/application (49.8ms)
+Completed 200 OK in 161ms (Views: 113.8ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 14:30:10 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eKqISmKH7zkcYx77jFBrUj9aMLf4lp5INXaVWDqrth+cA8CrJ/SjnhsbsmjGo8gfWaUkpaSWWQqaoQcW8xFRpw==", "event"=>{"name"=>"3", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"05", "start_time(5i)"=>"29", "place"=>"c", "check"=>"0"}, "commit"=>"Create Event"}
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant EventsController::From):
+  
+app/controllers/events_controller.rb:28:in `create'
+Started POST "/events" for ::1 at 2019-12-09 14:30:31 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eKqISmKH7zkcYx77jFBrUj9aMLf4lp5INXaVWDqrth+cA8CrJ/SjnhsbsmjGo8gfWaUkpaSWWQqaoQcW8xFRpw==", "event"=>{"name"=>"3", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"05", "start_time(5i)"=>"29", "place"=>"c", "check"=>"0"}, "commit"=>"Create Event"}
+Completed 500 Internal Server Error in 274ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `event_collection_params' for #<EventsController:0x00007f868e19afc0>):
+  
+app/controllers/events_controller.rb:28:in `create'
+Started POST "/events" for ::1 at 2019-12-09 14:35:13 +0900
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:76: syntax error, unexpected tLABEL
+...permit(events_attributes: Form:Event::REGISTRABLE_ATTRIBUTES)
+...                          ^~~~~
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:76: syntax error, unexpected ')', expecting end
+...:Event::REGISTRABLE_ATTRIBUTES)
+...                              ^
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:87: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/events_controller.rb:76: syntax error, unexpected tLABEL
+app/controllers/events_controller.rb:76: syntax error, unexpected ')', expecting end
+app/controllers/events_controller.rb:87: syntax error, unexpected end-of-input, expecting end
+Started GET "/events" for ::1 at 2019-12-09 14:38:06 +0900
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:76: syntax error, unexpected tLABEL
+...permit(events_attributes: Form:Event::REGISTRABLE_ATTRIBUTES)
+...                          ^~~~~
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:76: syntax error, unexpected ')', expecting end
+...:Event::REGISTRABLE_ATTRIBUTES)
+...                              ^
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:87: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/events_controller.rb:76: syntax error, unexpected tLABEL
+app/controllers/events_controller.rb:76: syntax error, unexpected ')', expecting end
+app/controllers/events_controller.rb:87: syntax error, unexpected end-of-input, expecting end
+Started GET "/events" for ::1 at 2019-12-09 14:38:54 +0900
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:76: syntax error, unexpected tLABEL
+...permit(events_attributes: Form:Event::REGISTRABLE_ATTRIBUTES)
+...                          ^~~~~
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:76: syntax error, unexpected ')', expecting end
+...:Event::REGISTRABLE_ATTRIBUTES)
+...                              ^
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:89: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/events_controller.rb:76: syntax error, unexpected tLABEL
+app/controllers/events_controller.rb:76: syntax error, unexpected ')', expecting end
+app/controllers/events_controller.rb:89: syntax error, unexpected end-of-input, expecting end
+Started GET "/events" for ::1 at 2019-12-09 14:45:34 +0900
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:74: syntax error, unexpected tLABEL
+...permit(events_attributes: Form:Event::REGISTRABLE_ATTRIBUTES)
+...                          ^~~~~
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:74: syntax error, unexpected ')', expecting end
+...:Event::REGISTRABLE_ATTRIBUTES)
+...                              ^
+/home/nakazono/Rails/test_calendar/app/controllers/events_controller.rb:86: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/events_controller.rb:74: syntax error, unexpected tLABEL
+app/controllers/events_controller.rb:74: syntax error, unexpected ')', expecting end
+app/controllers/events_controller.rb:86: syntax error, unexpected end-of-input, expecting end
+Started GET "/events" for ::1 at 2019-12-09 14:49:37 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (50.4ms)
+  Rendered events/index.html.erb within layouts/application (81.7ms)
+Completed 200 OK in 140ms (Views: 136.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 14:49:49 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (15.6ms)
+  Rendered events/new.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 119ms (Views: 71.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 14:49:56 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NxZGhhvjaI6LDJoDGdtJo8/33PuiEbQpg7MG8/HnUrtDUu6DaAp50YGFH8NpTs8kKbgeH/VLvEjj3HNL5IuC5w==", "event"=>{"name"=>"test3", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"05", "start_time(5i)"=>"49", "place"=>"v", "check"=>"0"}, "commit"=>"Create Event"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: form_event_collection):
+  
+app/controllers/events_controller.rb:74:in `event_collection_params'
+app/controllers/events_controller.rb:28:in `create'
+Started POST "/events" for ::1 at 2019-12-09 14:50:23 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NxZGhhvjaI6LDJoDGdtJo8/33PuiEbQpg7MG8/HnUrtDUu6DaAp50YGFH8NpTs8kKbgeH/VLvEjj3HNL5IuC5w==", "event"=>{"name"=>"test3", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"05", "start_time(5i)"=>"49", "place"=>"v", "check"=>"0"}, "commit"=>"Create Event"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'name' for Form::EventCollection.):
+  
+app/models/form/event_collection.rb:6:in `initialize'
+app/controllers/events_controller.rb:28:in `new'
+app/controllers/events_controller.rb:28:in `create'
+Started GET "/events" for ::1 at 2019-12-09 15:00:48 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (20.6ms)
+  Rendered events/index.html.erb within layouts/application (51.8ms)
+Completed 200 OK in 118ms (Views: 107.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 15:00:53 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (72.5ms)
+  Rendered events/new.html.erb within layouts/application (77.2ms)
+Completed 200 OK in 129ms (Views: 127.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 15:01:01 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"np7XzwwQnwSVNgS1neQ/NiC05ve42O+HnZolryDl6anq2n/Kf/mOW5+/gXXtcbmxxvskE++C5+b99VAXNYk59Q==", "event"=>{"name"=>"test3", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"06", "start_time(5i)"=>"00", "place"=>"c", "check"=>"1"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:30
+  [1m[36mEvent Create (3.3ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "test3"], ["start_time", "2019-12-09 06:00:00"], ["place", "c"], ["check", 1], ["created_at", "2019-12-09 06:01:01.245703"], ["updated_at", "2019-12-09 06:01:01.245703"]]
+  ↳ app/controllers/events_controller.rb:30
+  [1m[35m (14.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:30
+Redirected to http://localhost:3000/events/3
+Completed 302 Found in 37ms (ActiveRecord: 18.3ms)
+
+
+Started GET "/events/3" for ::1 at 2019-12-09 15:01:01 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (5.7ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 60ms (Views: 51.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 15:01:02 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (32.8ms)
+  Rendered events/index.html.erb within layouts/application (53.8ms)
+Completed 200 OK in 102ms (Views: 101.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/3" for ::1 at 2019-12-09 15:01:08 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 83ms (Views: 80.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 15:01:10 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (46.4ms)
+  Rendered events/index.html.erb within layouts/application (66.9ms)
+Completed 200 OK in 132ms (Views: 120.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/events/1" for ::1 at 2019-12-09 15:06:51 +0900
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"U6PIxQfVKKSiZcN2wlwiFiecomXD2P388uIwUjqOTl+3CoAkQqZkA6Udb+WIr4FbQWO2d5/YOr5dNaIc8zSp5w==", "id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:57
+  [1m[36mEvent Destroy (5.0ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/events_controller.rb:57
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:57
+Redirected to http://localhost:3000/events
+Completed 302 Found in 48ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 15:06:51 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (16.5ms)
+  Rendered events/index.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 115ms (Views: 113.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/edit" for ::1 at 2019-12-09 15:26:32 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (2.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (15.1ms)
+  Rendered events/edit.html.erb within layouts/application (34.7ms)
+Completed 200 OK in 103ms (Views: 95.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 15:41:47 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"add"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+Completed 404 Not Found in 6ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=add):
+  
+app/controllers/events_controller.rb:67:in `set_event'
+Started GET "/events/2/add" for ::1 at 2019-12-09 15:41:54 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/events/2/add"):
+  
+vendor/bundle/ruby/2.6.0/gems/actionpack-5.2.4/lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+vendor/bundle/ruby/2.6.0/gems/web-console-3.7.0/lib/web_console/middleware.rb:135:in `call_app'
+vendor/bundle/ruby/2.6.0/gems/web-console-3.7.0/lib/web_console/middleware.rb:30:in `block in call'
+vendor/bundle/ruby/2.6.0/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `catch'
+vendor/bundle/ruby/2.6.0/gems/web-console-3.7.0/lib/web_console/middleware.rb:20:in `call'
+vendor/bundle/ruby/2.6.0/gems/actionpack-5.2.4/lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+vendor/bundle/ruby/2.6.0/gems/railties-5.2.4/lib/rails/rack/logger.rb:38:in `call_app'
+vendor/bundle/ruby/2.6.0/gems/railties-5.2.4/lib/rails/rack/logger.rb:26:in `block in call'
+vendor/bundle/ruby/2.6.0/gems/activesupport-5.2.4/lib/active_support/tagged_logging.rb:71:in `block in tagged'
+vendor/bundle/ruby/2.6.0/gems/activesupport-5.2.4/lib/active_support/tagged_logging.rb:28:in `tagged'
+vendor/bundle/ruby/2.6.0/gems/activesupport-5.2.4/lib/active_support/tagged_logging.rb:71:in `tagged'
+vendor/bundle/ruby/2.6.0/gems/railties-5.2.4/lib/rails/rack/logger.rb:26:in `call'
+vendor/bundle/ruby/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+vendor/bundle/ruby/2.6.0/gems/actionpack-5.2.4/lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+vendor/bundle/ruby/2.6.0/gems/actionpack-5.2.4/lib/action_dispatch/middleware/request_id.rb:27:in `call'
+vendor/bundle/ruby/2.6.0/gems/rack-2.0.7/lib/rack/method_override.rb:22:in `call'
+vendor/bundle/ruby/2.6.0/gems/rack-2.0.7/lib/rack/runtime.rb:22:in `call'
+vendor/bundle/ruby/2.6.0/gems/activesupport-5.2.4/lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+vendor/bundle/ruby/2.6.0/gems/actionpack-5.2.4/lib/action_dispatch/middleware/executor.rb:14:in `call'
+vendor/bundle/ruby/2.6.0/gems/actionpack-5.2.4/lib/action_dispatch/middleware/static.rb:127:in `call'
+vendor/bundle/ruby/2.6.0/gems/rack-2.0.7/lib/rack/sendfile.rb:111:in `call'
+vendor/bundle/ruby/2.6.0/gems/railties-5.2.4/lib/rails/engine.rb:524:in `call'
+vendor/bundle/ruby/2.6.0/gems/puma-3.12.2/lib/puma/configuration.rb:227:in `call'
+vendor/bundle/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:674:in `handle_request'
+vendor/bundle/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:476:in `process_client'
+vendor/bundle/ruby/2.6.0/gems/puma-3.12.2/lib/puma/server.rb:334:in `block in run'
+vendor/bundle/ruby/2.6.0/gems/puma-3.12.2/lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/events" for ::1 at 2019-12-09 15:42:05 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (31.3ms)
+  Rendered events/index.html.erb within layouts/application (71.5ms)
+Completed 200 OK in 122ms (Views: 121.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 15:43:29 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"add"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:67
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=add):
+  
+app/controllers/events_controller.rb:67:in `set_event'
+Started GET "/events/add" for ::1 at 2019-12-09 15:44:47 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"add"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:69
+Completed 404 Not Found in 44ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=add):
+  
+app/controllers/events_controller.rb:69:in `set_event'
+Started GET "/events/add" for ::1 at 2019-12-09 15:48:20 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"add"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:69
+Completed 404 Not Found in 9ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=add):
+  
+app/controllers/events_controller.rb:69:in `set_event'
+Started GET "/events/add" for ::1 at 2019-12-09 15:50:45 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"add"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+Completed 404 Not Found in 9ms (ActiveRecord: 0.8ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=add):
+  
+app/controllers/events_controller.rb:71:in `set_event'
+Started GET "/events" for ::1 at 2019-12-09 15:55:04 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (27.7ms)
+  Rendered events/index.html.erb within layouts/application (60.3ms)
+Completed 200 OK in 112ms (Views: 110.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/2/edit" for ::1 at 2019-12-09 15:55:07 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (17.4ms)
+  Rendered events/edit.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 77ms (Views: 65.2ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/2" for ::1 at 2019-12-09 15:55:15 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gUloUBLnvgUUFKQe3h8DvkMvUbFk88+wuFAWmVUyCITzssh29aYymO2V6oHQyfI2gleS8Nhqz09nttX+dI7hzw==", "event"=>{"name"=>"test2", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"04", "start_time(5i)"=>"08", "place"=>"b", "check"=>"0"}, "commit"=>"Update Event", "id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (4.7ms)[0m  [1m[33mUPDATE "events" SET "start_time" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["start_time", "2019-12-09 04:08:00"], ["updated_at", "2019-12-09 06:55:15.327549"], ["id", 2]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 34ms (ActiveRecord: 8.7ms)
+
+
+Started GET "/events/2" for ::1 at 2019-12-09 15:55:15 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 60ms (Views: 58.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 15:55:31 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (12.5ms)
+  Rendered events/index.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 73ms (Views: 71.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/index" for ::1 at 2019-12-09 16:02:39 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mEvent Load (2.7ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+Completed 404 Not Found in 10ms (ActiveRecord: 2.7ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=index):
+  
+app/controllers/events_controller.rb:71:in `set_event'
+Started GET "/events/add" for ::1 at 2019-12-09 16:05:52 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"add"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+Completed 404 Not Found in 11ms (ActiveRecord: 1.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=add):
+  
+app/controllers/events_controller.rb:71:in `set_event'
+Started GET "/events/add" for ::1 at 2019-12-09 16:06:38 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:3
+  Rendered events/add.html.erb within layouts/application (27.4ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `label' for #<Event:0x00007f868de09578>):
+    1: <h1>Adding Event</h1>
+    2: 
+    3: <% @events.each do |event| %>
+    4:   <%= event.label :check %>
+    5:   <%= event.check_box :check %>
+    6:   <%= event.name %>
+    7: <% end %>
+  
+app/views/events/add.html.erb:4:in `block in _app_views_events_add_html_erb___3101690215116193464_70107939944740'
+app/views/events/add.html.erb:3:in `_app_views_events_add_html_erb___3101690215116193464_70107939944740'
+Started GET "/events/add" for ::1 at 2019-12-09 16:09:00 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mCACHE Event Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendered events/add.html.erb within layouts/application (626.4ms)
+Completed 500 Internal Server Error in 634ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `event' for #<#<Class:0x00007f868db66140>:0x00007f868dc67c60>):
+    1: <h1>Adding Event</h1>
+    2: 
+    3: <%= form_with(model: event, local: true) do |form| %>
+    4:   <% if event.errors.any? %>
+    5:     <div id="error_explanation">
+    6:       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  
+app/views/events/add.html.erb:3:in `_app_views_events_add_html_erb___3101690215116193464_70107940455200'
+Started GET "/events/add" for ::1 at 2019-12-09 16:10:16 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  Rendered events/add.html.erb within layouts/application (5.1ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    1: <h1>Adding Event</h1>
+    2: 
+    3: <%= form_with(@event) do |form| %>
+    4:   <% if @event.errors.any? %>
+    5:     <div id="error_explanation">
+    6:       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  
+app/views/events/add.html.erb:3:in `_app_views_events_add_html_erb___3101690215116193464_70107932809000'
+Started GET "/events/add" for ::1 at 2019-12-09 16:10:49 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  Rendered events/add.html.erb within layouts/application (7.7ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <h1>Adding Event</h1>
+    2: 
+    3: <%= form_for(@event) do |form| %>
+    4:   <% if @event.errors.any? %>
+    5:     <div id="error_explanation">
+    6:       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  
+app/views/events/add.html.erb:3:in `_app_views_events_add_html_erb___3101690215116193464_70107932330240'
+Started GET "/events/add" for ::1 at 2019-12-09 16:13:17 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:2
+  Rendered events/add.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 82ms (Views: 79.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:13:25 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (29.5ms)
+  Rendered events/index.html.erb within layouts/application (46.7ms)
+Completed 200 OK in 104ms (Views: 102.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:14:42 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:2
+  Rendered events/add.html.erb within layouts/application (469.0ms)
+Completed 500 Internal Server Error in 477ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007f868db66140>:0x0000000003629e60>):
+    22: <td><%= event.place %></td>
+    23: <% end %>
+    24: <div class="actions">
+    25:   <%= form.submit %>
+    26: </div>
+    27: <% end %>
+    28: 
+  
+app/views/events/add.html.erb:25:in `block in _app_views_events_add_html_erb___3101690215116193464_28398500'
+app/views/events/add.html.erb:2:in `_app_views_events_add_html_erb___3101690215116193464_28398500'
+Started GET "/events/add" for ::1 at 2019-12-09 16:15:03 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (11.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:2
+  Rendered events/add.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 80ms (Views: 67.8ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:15:27 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (5.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:2
+  Rendered events/add.html.erb within layouts/application (28.5ms)
+Completed 200 OK in 153ms (Views: 146.2ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:17:35 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  Rendered events/add.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/views/events/add.html.erb:45: syntax error, unexpected ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/events/add.html.erb:45: syntax error, unexpected ensure, expecting end-of-input
+Started GET "/events/add" for ::1 at 2019-12-09 16:21:17 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (6.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (21.3ms)
+Completed 200 OK in 90ms (Views: 82.0ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:22:15 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 77ms (Views: 76.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:23:22 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (34.2ms)
+  Rendered events/index.html.erb within layouts/application (47.1ms)
+Completed 200 OK in 101ms (Views: 100.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:27:58 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 81ms (Views: 79.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:28:57 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (2.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 72ms (Views: 68.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:29:13 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 65ms (Views: 62.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:29:21 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (22.7ms)
+  Rendered events/index.html.erb within layouts/application (48.8ms)
+Completed 200 OK in 100ms (Views: 99.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:32:30 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (53.1ms)
+  Rendered events/index.html.erb within layouts/application (58.1ms)
+Completed 200 OK in 115ms (Views: 114.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:32:33 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 88ms (Views: 86.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:32:37 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (37.1ms)
+  Rendered events/index.html.erb within layouts/application (58.2ms)
+Completed 200 OK in 105ms (Views: 103.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:40:48 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  Rendered events/add.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/views/events/add.html.erb:33: syntax error, unexpected ensure, expecting end-of-input
+          ensure
+          ^~~~~~):
+  
+app/views/events/add.html.erb:33: syntax error, unexpected ensure, expecting end-of-input
+Started GET "/events/add" for ::1 at 2019-12-09 16:41:01 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" LIMIT ?[0m  [["LIMIT", 11]]
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendered events/add.html.erb within layouts/application (8.8ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `to_key' for #<Event::ActiveRecord_Relation:0x000000000364c028>):
+    11:   </thead>
+    12: 
+    13:   <tbody>
+    14:     <%= form_for(@events) do |form| %>
+    15:     <% if !form.check %>
+    16:     <tr>
+    17:       <td><%= form.check_box :check %></td>
+  
+app/views/events/add.html.erb:14:in `_app_views_events_add_html_erb___3101690215116193464_28481200'
+Started GET "/events/add" for ::1 at 2019-12-09 16:44:59 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 61ms (Views: 59.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:45:56 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  Rendered events/add.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/nakazono/Rails/test_calendar/app/views/events/add.html.erb:34: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+...r.append=( form.submit, "add" );@output_buffer.safe_append='
+...                              ^
+/home/nakazono/Rails/test_calendar/app/views/events/add.html.erb:35: syntax error, unexpected end, expecting ')'
+'.freeze;     end 
+              ^~~
+/home/nakazono/Rails/test_calendar/app/views/events/add.html.erb:45: syntax error, unexpected ensure, expecting ')'
+          ensure
+          ^~~~~~
+/home/nakazono/Rails/test_calendar/app/views/events/add.html.erb:47: syntax error, unexpected end, expecting ')'
+          end
+          ^~~):
+  
+app/views/events/add.html.erb:34: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/views/events/add.html.erb:35: syntax error, unexpected end, expecting ')'
+app/views/events/add.html.erb:45: syntax error, unexpected ensure, expecting ')'
+app/views/events/add.html.erb:47: syntax error, unexpected end, expecting ')'
+Started GET "/events/add" for ::1 at 2019-12-09 16:46:42 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 68ms (Views: 61.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:47:36 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 57ms (Views: 55.8ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/events/2" for ::1 at 2019-12-09 16:47:51 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mNledqyVxFh2TvIE2znRrcGL7FrME5bjfkSuUpfmSdrqIv5QS9RIxY/PvJvV7yAlAPMvG3CKlhyhom01tlqgkQ==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (5.3ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 07:47:51.221472"], ["id", 2]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (11.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 32ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/events/2" for ::1 at 2019-12-09 16:47:51 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 89ms (Views: 81.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:47:55 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (10.5ms)
+  Rendered events/index.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 92ms (Views: 85.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 16:48:07 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 70ms (Views: 68.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:48:09 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (36.6ms)
+  Rendered events/index.html.erb within layouts/application (59.4ms)
+Completed 200 OK in 112ms (Views: 110.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:48:29 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:17
+  Rendered simple_calendar/_month_calendar.html.erb (21.7ms)
+  Rendered events/index.html.erb within layouts/application (36.6ms)
+Completed 200 OK in 83ms (Views: 82.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:48:36 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (23.6ms)
+  Rendered events/index.html.erb within layouts/application (38.3ms)
+Completed 200 OK in 103ms (Views: 102.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 16:49:14 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (30.9ms)
+  Rendered events/new.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 86ms (Views: 83.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:49:22 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (33.2ms)
+  Rendered events/index.html.erb within layouts/application (58.7ms)
+Completed 200 OK in 114ms (Views: 112.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/2/edit" for ::1 at 2019-12-09 16:53:20 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (51.0ms)
+  Rendered events/edit.html.erb within layouts/application (52.8ms)
+Completed 200 OK in 110ms (Views: 107.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 16:53:22 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (33.1ms)
+  Rendered events/index.html.erb within layouts/application (55.0ms)
+Completed 200 OK in 109ms (Views: 107.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 16:59:56 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (36.9ms)
+  Rendered events/new.html.erb within layouts/application (38.3ms)
+Completed 200 OK in 109ms (Views: 100.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 17:00:04 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xNDETdS0U6yGo8F8J4pDPOZwzU1wxiyR4n7hD8GqZ9CwlGxIp11C84wqRLxXH8W7AD8PqSecJPCCEZS31Ma3jA==", "event"=>{"name"=>"test6", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"07", "start_time(5i)"=>"59", "place"=>"", "check"=>"0"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "test6"], ["start_time", "2019-12-09 07:59:00"], ["place", ""], ["check", 0], ["created_at", "2019-12-09 08:00:04.027037"], ["updated_at", "2019-12-09 08:00:04.027037"]]
+  ↳ app/controllers/events_controller.rb:34
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 11ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:00:04 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 53ms (Views: 51.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:00:06 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (8.9ms)
+  Rendered events/index.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 104ms (Views: 100.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/events/4/edit" for ::1 at 2019-12-09 17:00:10 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (27.4ms)
+  Rendered events/edit.html.erb within layouts/application (28.8ms)
+Completed 200 OK in 87ms (Views: 85.0ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:00:15 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L5vnwjOp5l4ubJYBUKUidIbI/yL8y2RnYcNWihgu0X3xwPUs7LuNPHjvp2TbH3XnlL4T7LmOZ+XxN7JdYd8jEg==", "event"=>{"name"=>"test6", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"07", "start_time(5i)"=>"59", "place"=>"3", "check"=>"0"}, "commit"=>"Update Event", "id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (7.8ms)[0m  [1m[33mUPDATE "events" SET "place" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["place", "3"], ["updated_at", "2019-12-09 08:00:15.860213"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 18ms (ActiveRecord: 10.5ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:00:15 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 46ms (Views: 44.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:00:16 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (29.4ms)
+  Rendered events/index.html.erb within layouts/application (41.6ms)
+Completed 200 OK in 91ms (Views: 88.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:01:04 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (34.5ms)
+  Rendered events/index.html.erb within layouts/application (50.7ms)
+Completed 200 OK in 105ms (Views: 103.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:01:17 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 67ms (Views: 65.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:01:50 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (33.6ms)
+  Rendered events/index.html.erb within layouts/application (54.2ms)
+Completed 200 OK in 149ms (Views: 146.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:01:56 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 108ms (Views: 103.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:02:31 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (16.7ms)
+Completed 200 OK in 99ms (Views: 95.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:02:36 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (3.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (108.9ms)
+  Rendered events/index.html.erb within layouts/application (130.4ms)
+Completed 200 OK in 215ms (Views: 210.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/events/2" for ::1 at 2019-12-09 17:02:37 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 84ms (Views: 80.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:02:38 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (41.1ms)
+  Rendered events/index.html.erb within layouts/application (55.4ms)
+Completed 200 OK in 157ms (Views: 153.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:02:42 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 99ms (Views: 97.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:03:31 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 77ms (Views: 75.7ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:03:34 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bViUsdfr9qSF3cHTvBx379ECM9f6+AvSJGolIDFt5T6zA4ZfCPmdxtNe8LY3piB8w3TfGb+9CFC0nsH3SJwXUQ==", "event"=>{"check"=>"0"}, "commit"=>"add", "id"=>"4"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 20ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:03:34 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 53ms (Views: 51.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:03:39 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (37.3ms)
+  Rendered events/index.html.erb within layouts/application (55.4ms)
+Completed 200 OK in 107ms (Views: 105.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:03:44 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (9.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 94ms (Views: 80.4ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:06:58 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (51.0ms)
+  Rendered events/index.html.erb within layouts/application (68.3ms)
+Completed 200 OK in 200ms (Views: 197.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 17:07:03 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (23.0ms)
+  Rendered events/new.html.erb within layouts/application (35.2ms)
+Completed 200 OK in 85ms (Views: 84.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 17:07:10 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4SQw1m2vTA+fGPhcWpp/kCDNT8AVUEi5U0t5V+kYUXSVYJjTHkZdUJWRfZwqD/kXxoKNJEIKQNgzJAzv/HSBKA==", "event"=>{"name"=>"test5", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"08", "start_time(5i)"=>"07", "place"=>"r", "check"=>"0"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "test5"], ["start_time", "2019-12-09 08:07:00"], ["place", "r"], ["check", 0], ["created_at", "2019-12-09 08:07:10.289746"], ["updated_at", "2019-12-09 08:07:10.289746"]]
+  ↳ app/controllers/events_controller.rb:34
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+Redirected to http://localhost:3000/events/5
+Completed 302 Found in 16ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/events/5" for ::1 at 2019-12-09 17:07:10 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 60ms (Views: 58.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:07:12 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (39.4ms)
+  Rendered events/index.html.erb within layouts/application (54.9ms)
+Completed 200 OK in 97ms (Views: 95.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:07:14 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 85ms (Views: 84.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:07:27 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (20.8ms)
+  Rendered events/index.html.erb within layouts/application (41.3ms)
+Completed 200 OK in 142ms (Views: 138.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:08:44 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 100ms (Views: 94.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:10:13 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (24.3ms)
+  Rendered events/index.html.erb within layouts/application (61.3ms)
+Completed 200 OK in 141ms (Views: 139.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:10:28 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (475.7ms)
+Completed 500 Internal Server Error in 478ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<ActionView::Helpers::FormBuilder:0x0000000003604250>):
+    27:     <% if !event.check %>
+    28:     <tr>
+    29:       <td><%= form.check_box :check %></td>
+    30:       <td><%= form.name %></td>
+    31:       <td><%= event.start_time %></td>
+    32:       <td><%= event.place %></td>
+    33:       <td><%= form.submit "add" %></td>
+  
+app/views/events/add.html.erb:30:in `block (2 levels) in _app_views_events_add_html_erb___3101690215116193464_70108160610080'
+app/views/events/add.html.erb:15:in `block in _app_views_events_add_html_erb___3101690215116193464_70108160610080'
+app/views/events/add.html.erb:14:in `_app_views_events_add_html_erb___3101690215116193464_70108160610080'
+Started GET "/events/add" for ::1 at 2019-12-09 17:10:40 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 75ms (Views: 74.2ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:10:43 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ijJnL6aOl1Ufwbo1pLMzV6A7elO9UGTDfJRDpVFKZW9UaXXBeZz8N0lCi1AvCWTEsk2WnfgVZ0HsYKdyKLuXAA==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (4.3ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:10:43.854148"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (9.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 37ms (ActiveRecord: 13.9ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:10:43 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 85ms (Views: 79.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:12:17 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (39.3ms)
+  Rendered events/index.html.erb within layouts/application (59.5ms)
+Completed 200 OK in 119ms (Views: 116.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:12:20 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 101ms (Views: 100.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:12:26 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (26.6ms)
+  Rendered events/index.html.erb within layouts/application (58.7ms)
+Completed 200 OK in 132ms (Views: 130.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:13:29 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (24.9ms)
+  Rendered events/index.html.erb within layouts/application (112.5ms)
+Completed 200 OK in 879ms (Views: 850.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:13:36 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (33.7ms)
+Completed 200 OK in 91ms (Views: 85.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:15:17 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (35.7ms)
+  Rendered events/index.html.erb within layouts/application (54.6ms)
+Completed 200 OK in 133ms (Views: 132.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:15:22 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 95ms (Views: 50.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/4/edit" for ::1 at 2019-12-09 17:15:23 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (96.8ms)
+  Rendered events/edit.html.erb within layouts/application (98.2ms)
+Completed 200 OK in 159ms (Views: 150.3ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:15:38 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8gCjxtQvzTIEHDSnNdJzQZtXPAdl3FJIG9//2uu3MJUsW7EoCz2mUFKfBcK+aCTSiSHQySCZUcqLKxsNkkbC+g==", "event"=>{"name"=>"test6", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"13", "start_time(4i)"=>"07", "start_time(5i)"=>"59", "place"=>"3", "check"=>"1"}, "commit"=>"Update Event", "id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (4.7ms)[0m  [1m[33mUPDATE "events" SET "start_time" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["start_time", "2019-12-13 07:59:00"], ["updated_at", "2019-12-09 08:15:38.610959"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (8.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 42ms (ActiveRecord: 13.4ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:15:38 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (3.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 55ms (Views: 49.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:15:43 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (33.6ms)
+  Rendered events/index.html.erb within layouts/application (55.1ms)
+Completed 200 OK in 111ms (Views: 109.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:15:45 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 85ms (Views: 83.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:17:29 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (20.9ms)
+  Rendered events/index.html.erb within layouts/application (55.8ms)
+Completed 200 OK in 133ms (Views: 132.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:17:51 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 99ms (Views: 96.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:18:03 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 112ms (Views: 107.8ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/5" for ::1 at 2019-12-09 17:18:07 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FLpGtnBcRyLwV40ZWlmDRVhqBf3TuUzBgafCOZxCU2GoYfgZ6KP4M4pQAq5ZmRW06ff2wGIm4TITTnIpWW7hlA==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"5"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (0.3ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:18:07.739731"], ["id", 5]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/5
+Completed 302 Found in 34ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/events/5" for ::1 at 2019-12-09 17:18:07 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 51ms (Views: 48.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:19:01 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (29.0ms)
+  Rendered events/index.html.erb within layouts/application (53.2ms)
+Completed 200 OK in 108ms (Views: 107.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/4/edit" for ::1 at 2019-12-09 17:19:04 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (25.5ms)
+  Rendered events/edit.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 93ms (Views: 90.5ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:19:07 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"apytz2xUaLYqSgb3gqvTkZHWBrvWDYOsmofnVWCbQXS0x78hs0YD1HzJN5IJEYQCg6DqdZNIgC4KcwOCGWqzGw==", "event"=>{"name"=>"test6", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"13", "start_time(4i)"=>"07", "start_time(5i)"=>"59", "place"=>"3", "check"=>"0"}, "commit"=>"Update Event", "id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (8.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (9.1ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 0], ["updated_at", "2019-12-09 08:19:07.249363"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (10.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 45ms (ActiveRecord: 27.6ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:19:07 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 57ms (Views: 48.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:19:08 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (27.1ms)
+  Rendered events/index.html.erb within layouts/application (44.3ms)
+Completed 200 OK in 149ms (Views: 148.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:23:34 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (31.9ms)
+Completed 200 OK in 91ms (Views: 89.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:23:38 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 57ms (Views: 55.5ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:23:41 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q7hsJRaC048uizk3Xu25c0ChGXJYcj2ATktt8Dv2m8Gd437LyZC47XgICFLVV+7gUtf1vB03PgLev4knQgdprg==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (2.5ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:23:41.499757"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 32ms (ActiveRecord: 16.8ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:23:41 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 54ms (Views: 52.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:23:47 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (20.8ms)
+  Rendered events/index.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 124ms (Views: 80.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/4/edit" for ::1 at 2019-12-09 17:25:20 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (53.4ms)
+  Rendered events/edit.html.erb within layouts/application (57.3ms)
+Completed 200 OK in 136ms (Views: 134.3ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:25:22 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S5uS6HDhOenaD+fhF/40UVy9zALY9KVQqKOWJLxB7ySVwIAGr/NSi4yM1oScRGPCTssgzJ2xptI4V3LzxbAdSw==", "event"=>{"name"=>"test6", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"13", "start_time(4i)"=>"07", "start_time(5i)"=>"59", "place"=>"3", "check"=>"0"}, "commit"=>"Update Event", "id"=>"4"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (1.5ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (3.0ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 0], ["updated_at", "2019-12-09 08:25:22.776002"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 17ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:25:22 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 56ms (Views: 51.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:25:24 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (15.4ms)
+  Rendered events/index.html.erb within layouts/application (36.9ms)
+Completed 200 OK in 95ms (Views: 93.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:25:26 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 80ms (Views: 79.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:25:28 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (36.7ms)
+  Rendered events/index.html.erb within layouts/application (46.5ms)
+Completed 200 OK in 129ms (Views: 127.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/2/edit" for ::1 at 2019-12-09 17:25:30 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (25.8ms)
+  Rendered events/edit.html.erb within layouts/application (36.9ms)
+Completed 200 OK in 142ms (Views: 137.0ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/2" for ::1 at 2019-12-09 17:25:32 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MBN63wZT6lWHPQxRrKvk6WmNPrmLz4WfsQ6Hac1yex9C6Nr54RJmyH68Qs6ifRVhqPX9+DdWhWBu6EQO7M6SVA==", "event"=>{"name"=>"test2", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"04", "start_time(5i)"=>"08", "place"=>"b", "check"=>"0"}, "commit"=>"Update Event", "id"=>"2"}
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (3.7ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 0], ["updated_at", "2019-12-09 08:25:32.225497"], ["id", 2]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 28ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/events/2" for ::1 at 2019-12-09 17:25:32 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 46ms (Views: 42.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:25:33 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (28.4ms)
+  Rendered events/index.html.erb within layouts/application (40.2ms)
+Completed 200 OK in 108ms (Views: 107.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:25:35 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 60ms (Views: 58.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:25:48 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (32.3ms)
+  Rendered events/index.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 109ms (Views: 99.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/3/edit" for ::1 at 2019-12-09 17:25:49 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (17.1ms)
+  Rendered events/edit.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 92ms (Views: 86.3ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/3" for ::1 at 2019-12-09 17:25:51 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nCyGyaYrgz74vSMRqy+IQXtpcCRQnZkk7Nh2hVZ2yPEXScBLyLpxZX8/0bIrHlOLve5PzOojy2PD73ECdWvx6g==", "event"=>{"name"=>"test3", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"06", "start_time(5i)"=>"00", "place"=>"c", "check"=>"0"}, "commit"=>"Update Event", "id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (3.1ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 0], ["updated_at", "2019-12-09 08:25:51.332117"], ["id", 3]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (22.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/3
+Completed 302 Found in 37ms (ActiveRecord: 25.9ms)
+
+
+Started GET "/events/3" for ::1 at 2019-12-09 17:25:51 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 89ms (Views: 86.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:25:52 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (30.6ms)
+  Rendered events/index.html.erb within layouts/application (46.5ms)
+Completed 200 OK in 137ms (Views: 133.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/events/5/edit" for ::1 at 2019-12-09 17:25:53 +0900
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (27.6ms)
+  Rendered events/edit.html.erb within layouts/application (33.4ms)
+Completed 200 OK in 93ms (Views: 89.9ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/5" for ::1 at 2019-12-09 17:25:55 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nTQPUv5Omc7T3l+0ze8T5ifKc8jewMUlJf6DNyk3NNEh77H9ZrEm36nZ0APOL4UXlleA9W9faNa3FzMn7BuGJA==", "event"=>{"name"=>"test5", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"08", "start_time(5i)"=>"07", "place"=>"r", "check"=>"0"}, "commit"=>"Update Event", "id"=>"5"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (1.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (2.8ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 0], ["updated_at", "2019-12-09 08:25:55.805347"], ["id", 5]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (17.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/5
+Completed 302 Found in 35ms (ActiveRecord: 22.0ms)
+
+
+Started GET "/events/5" for ::1 at 2019-12-09 17:25:55 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 51ms (Views: 46.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:25:57 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (17.6ms)
+  Rendered events/index.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 98ms (Views: 97.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:25:58 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (9.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 78ms (Views: 66.7ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:26:26 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 69ms (Views: 68.3ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/2" for ::1 at 2019-12-09 17:26:28 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+GLEOK42QIvbX5snN5JsAHczz04+jiG8v2mWg4Zn5+2KmWQeSXfMFiLe1bg5RJ2ItksMD4IXIUNgj1Xkp9sOpg==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (11.3ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:26:28.447183"], ["id", 2]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 30ms (ActiveRecord: 14.9ms)
+
+
+Started GET "/events/2" for ::1 at 2019-12-09 17:26:28 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 49ms (Views: 44.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:26:30 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (21.5ms)
+  Rendered events/index.html.erb within layouts/application (38.8ms)
+Completed 200 OK in 92ms (Views: 90.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:27:40 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 83ms (Views: 82.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:28:59 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 76ms (Views: 74.9ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/events/3" for ::1 at 2019-12-09 17:29:02 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pUW/VqiTfszzmNoEoB/qCrK5XReJgLzslwTXOA/hP74uIPnUxgKMl3QaKKcgLjHAdD5i/zM+7qu4M9C/LPwGpQ==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"3"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (0.6ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:29:02.572466"], ["id", 3]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/3
+Completed 302 Found in 38ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/events/3" for ::1 at 2019-12-09 17:29:02 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 64ms (Views: 60.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:29:05 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (15.9ms)
+  Rendered events/index.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 106ms (Views: 104.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:29:08 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 127ms (Views: 126.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:29:10 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 85ms (Views: 83.5ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/events/4" for ::1 at 2019-12-09 17:29:11 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"15v9UlsPaHVf2UIfSuAkAApP0IuGtz9Ay1mO44hU5YYJwO+8hB0DFwlac3rBWnOTGDk8RcPyPMJbrWo08aUX6Q==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"4"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (3.0ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:29:11.962770"], ["id", 4]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 26ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/events/4" for ::1 at 2019-12-09 17:29:12 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 81ms (Views: 74.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:29:14 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (36.2ms)
+  Rendered events/index.html.erb within layouts/application (55.1ms)
+Completed 200 OK in 153ms (Views: 150.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:29:17 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 93ms (Views: 86.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:29:21 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 76ms (Views: 75.0ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/events/5" for ::1 at 2019-12-09 17:29:23 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CUR/UAkP92F53KDwbKXfwZPPIBBndsHNB9Kxrrbszvu1n8H/kfBIcAPbL0dvZUkwIlLTLdbpbD6VOwG+c8B8Dg==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (1.8ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:29:23.728195"], ["id", 5]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (4.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/5
+Completed 302 Found in 13ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/events/5" for ::1 at 2019-12-09 17:29:23 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 73ms (Views: 71.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:29:27 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (33.0ms)
+  Rendered events/index.html.erb within layouts/application (50.3ms)
+Completed 200 OK in 96ms (Views: 90.7ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/events/2" for ::1 at 2019-12-09 17:30:05 +0900
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ksL+bYn1QZa0wTyB7w1luS8TQ1e2xYb/1Qr6RafZdQ92a7aMzIYNMbO5kBKl/sb0SexXRerFQb163WgLbmOStw==", "id"=>"2"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+  [1m[36mEvent Destroy (2.8ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/events_controller.rb:61
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+Redirected to http://localhost:3000/events
+Completed 302 Found in 31ms (ActiveRecord: 16.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:30:06 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (25.3ms)
+  Rendered events/index.html.erb within layouts/application (39.6ms)
+Completed 200 OK in 165ms (Views: 163.5ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/events/3" for ::1 at 2019-12-09 17:30:15 +0900
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+0G5Bisn8Zf5kP9d2Qm8tCBUybPAKCbjQ8q2DSxg+Dcf6PHnblS9MP7oU86T+h/5RqvdoZwo4aHsHSRD5dofjw==", "id"=>"3"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+  [1m[36mEvent Destroy (3.1ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/events_controller.rb:61
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+Redirected to http://localhost:3000/events
+Completed 302 Found in 36ms (ActiveRecord: 16.3ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:30:15 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (17.8ms)
+  Rendered events/index.html.erb within layouts/application (28.0ms)
+Completed 200 OK in 80ms (Views: 78.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/events/4" for ::1 at 2019-12-09 17:30:17 +0900
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AJ7FVLUVR8tA8C55IOHDx5aPam4RgGSA+2IU64K9wOrkN4218GYLbEeIgupqEmCK8HB+fE2Ao8JUtYalSwcnUg==", "id"=>"4"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/events_controller.rb:61
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+Redirected to http://localhost:3000/events
+Completed 302 Found in 11ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:30:17 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (18.8ms)
+  Rendered events/index.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 104ms (Views: 103.4ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/events/5" for ::1 at 2019-12-09 17:30:19 +0900
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"TDSn727Ftdy3h9hVfSpy39VCGwP8WPakLjBZ/IDZZHWone8OK7b5e7D/dMY32dGSs70PEaBYMeaB58uySWODzQ==", "id"=>"5"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+  [1m[36mEvent Destroy (10.9ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/events_controller.rb:61
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+Redirected to http://localhost:3000/events
+Completed 302 Found in 31ms (ActiveRecord: 16.9ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:30:19 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (11.7ms)
+  Rendered events/index.html.erb within layouts/application (23.2ms)
+Completed 200 OK in 69ms (Views: 67.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 17:45:27 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (23.8ms)
+  Rendered events/new.html.erb within layouts/application (30.7ms)
+Completed 200 OK in 90ms (Views: 87.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 17:45:54 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/2rONbTdya6pI6iBTJF9Jly5/wGu/mC9FXoBhOdHoJuLLmYwxzTY8aOqLUE8BPuhuvY95fmkaNx1FXQ88itwxw==", "event"=>{"name"=>"event", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"9", "start_time(4i)"=>"08", "start_time(5i)"=>"45", "place"=>"okayama", "check"=>"0"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+  [1m[36mEvent Create (3.3ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "event"], ["start_time", "2019-12-09 08:45:00"], ["place", "okayama"], ["check", 0], ["created_at", "2019-12-09 08:45:54.805321"], ["updated_at", "2019-12-09 08:45:54.805321"]]
+  ↳ app/controllers/events_controller.rb:34
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+Redirected to http://localhost:3000/events/6
+Completed 302 Found in 15ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/events/6" for ::1 at 2019-12-09 17:45:54 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 78ms (Views: 76.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:45:56 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (30.6ms)
+  Rendered events/index.html.erb within layouts/application (45.3ms)
+Completed 200 OK in 93ms (Views: 91.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:45:58 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 71ms (Views: 70.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 17:52:13 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (5.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 66ms (Views: 59.4ms | ActiveRecord: 5.3ms)
+
+
+Started PATCH "/events/6" for ::1 at 2019-12-09 17:52:16 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qJPZuyEpYhIGlysG7rGLGcamwZJJc8cKzpmlc7HMi6XdGk5vZV8QzHqaD/1fQlyvIf47AHjMzYG3FYp52g1KpA==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"6"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (1.4ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 08:52:16.583801"], ["id", 6]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/6
+Completed 302 Found in 16ms (ActiveRecord: 12.1ms)
+
+
+Started GET "/events/6" for ::1 at 2019-12-09 17:52:16 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 59ms (Views: 56.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:52:18 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (57.6ms)
+  Rendered events/index.html.erb within layouts/application (77.6ms)
+Completed 200 OK in 128ms (Views: 126.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/events/6" for ::1 at 2019-12-09 17:52:25 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 97ms (Views: 95.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 17:52:27 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (25.7ms)
+  Rendered events/index.html.erb within layouts/application (37.8ms)
+Completed 200 OK in 120ms (Views: 119.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 18:19:12 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 130ms (Views: 116.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 18:19:14 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (41.9ms)
+  Rendered events/index.html.erb within layouts/application (55.7ms)
+Completed 200 OK in 144ms (Views: 143.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/new" for ::1 at 2019-12-09 18:19:15 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (17.2ms)
+  Rendered events/new.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 197ms (Views: 188.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for ::1 at 2019-12-09 18:19:36 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lyg8Gjcv330MLRsVQV/8NdEJZLcHkkWTjrOKxOuPf4zjbJQfRMbOIgakntUxynqyN0amU1DITfLu3P98/uOv0A==", "event"=>{"name"=>"クリスマス", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"24", "start_time(4i)"=>"09", "start_time(5i)"=>"19", "place"=>"自宅", "check"=>"0"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "クリスマス"], ["start_time", "2019-12-24 09:19:00"], ["place", "自宅"], ["check", 0], ["created_at", "2019-12-09 09:19:36.023840"], ["updated_at", "2019-12-09 09:19:36.023840"]]
+  ↳ app/controllers/events_controller.rb:34
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+Redirected to http://localhost:3000/events/7
+Completed 302 Found in 24ms (ActiveRecord: 17.4ms)
+
+
+Started GET "/events/7" for ::1 at 2019-12-09 18:19:36 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 42ms (Views: 38.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 18:19:37 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (8.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (27.8ms)
+  Rendered events/index.html.erb within layouts/application (45.7ms)
+Completed 200 OK in 97ms (Views: 88.4ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 18:19:39 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (17.8ms)
+Completed 200 OK in 72ms (Views: 71.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-09 18:19:43 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 57ms (Views: 56.2ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/events/7" for ::1 at 2019-12-09 18:19:45 +0900
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G2Auzs1E2rWA03SToxF+oZrJKB9GzN1mYxtC2XMP/5nO2MIwm4qkfioral5Pteazvf2F+oiVytCCVgDqFXLHCA==", "event"=>{"check"=>"1"}, "commit"=>"add", "id"=>"7"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+  [1m[36mEvent Update (2.3ms)[0m  [1m[33mUPDATE "events" SET "check" = ?, "updated_at" = ? WHERE "events"."id" = ?[0m  [["check", 1], ["updated_at", "2019-12-09 09:19:45.519634"], ["id", 7]]
+  ↳ app/controllers/events_controller.rb:48
+  [1m[35m (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:48
+Redirected to http://localhost:3000/events/7
+Completed 302 Found in 20ms (ActiveRecord: 11.3ms)
+
+
+Started GET "/events/7" for ::1 at 2019-12-09 18:19:45 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 52ms (Views: 50.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-09 18:19:47 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (27.0ms)
+  Rendered events/index.html.erb within layouts/application (36.6ms)
+Completed 200 OK in 80ms (Views: 78.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-10 11:04:58 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (27.1ms)
+  Rendered events/index.html.erb within layouts/application (105.2ms)
+Completed 200 OK in 927ms (Views: 863.4ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/events/7" for ::1 at 2019-12-10 12:33:48 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 101ms (Views: 45.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events" for ::1 at 2019-12-10 12:33:50 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (37.9ms)
+  Rendered events/index.html.erb within layouts/application (50.2ms)
+Completed 200 OK in 98ms (Views: 96.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/7" for ::1 at 2019-12-10 12:33:53 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 72ms (Views: 63.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-10 12:33:54 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (49.4ms)
+  Rendered events/index.html.erb within layouts/application (69.2ms)
+Completed 200 OK in 160ms (Views: 159.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/add" for ::1 at 2019-12-10 12:34:06 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 67ms (Views: 63.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for ::1 at 2019-12-10 12:34:08 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (24.8ms)
+  Rendered events/index.html.erb within layouts/application (45.5ms)
+Completed 200 OK in 100ms (Views: 98.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-12-12 10:32:03 +0900
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ vendor/bundle/ruby/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (30.3ms)
+  Rendered events/index.html.erb within layouts/application (64.8ms)
+Completed 200 OK in 940ms (Views: 873.3ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/events/6" for 127.0.0.1 at 2019-12-12 10:41:22 +0900
+Processing by EventsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tfUvZ1Er4XJQeginr6sE2OrpxHIdysgsk1THd+BezgTvXWKabJaMvQ7NeUv9Ue0r6t0xhIeBLbxdpqAnjQ78hg==", "id"=>"6"}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  [1m[35m (1.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+  [1m[36mEvent Destroy (1.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/events_controller.rb:61
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:61
+Redirected to http://localhost:3000/events
+Completed 302 Found in 17ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-12-12 10:41:22 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (25.1ms)
+  Rendered events/index.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 87ms (Views: 85.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2019-12-12 10:46:37 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (53.5ms)
+  Rendered events/new.html.erb within layouts/application (59.8ms)
+Completed 200 OK in 98ms (Views: 96.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/events" for 127.0.0.1 at 2019-12-12 10:47:32 +0900
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"G1lrhYFDC9Odg2buxTro+tmqHuokCZcQD/GehMB+8bvevu6smOXEkDrGr7ScvsAOszPjRz2MZ7KIcJCuN5xEDw==", "event"=>{"name"=>"忘年会", "start_time(1i)"=>"2019", "start_time(2i)"=>"12", "start_time(3i)"=>"12", "start_time(4i)"=>"01", "start_time(5i)"=>"46", "place"=>"居酒屋", "check"=>"0"}, "commit"=>"Create Event"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("name", "start_time", "place", "check", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "忘年会"], ["start_time", "2019-12-12 01:46:00"], ["place", "居酒屋"], ["check", 0], ["created_at", "2019-12-12 01:47:32.049533"], ["updated_at", "2019-12-12 01:47:32.049533"]]
+  ↳ app/controllers/events_controller.rb:34
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/events_controller.rb:34
+Redirected to http://localhost:3000/events/8
+Completed 302 Found in 21ms (ActiveRecord: 14.6ms)
+
+
+Started GET "/events/8" for 127.0.0.1 at 2019-12-12 10:47:32 +0900
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:71
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 98ms (Views: 95.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-12-12 10:47:35 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (17.4ms)
+  Rendered events/index.html.erb within layouts/application (42.5ms)
+Completed 200 OK in 96ms (Views: 94.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/add" for 127.0.0.1 at 2019-12-12 10:47:37 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 66ms (Views: 58.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-12-12 10:47:39 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (29.6ms)
+  Rendered events/index.html.erb within layouts/application (54.2ms)
+Completed 200 OK in 95ms (Views: 94.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events/add" for 127.0.0.1 at 2019-12-12 10:47:42 +0900
+Processing by EventsController#add as HTML
+  Rendering events/add.html.erb within layouts/application
+  [1m[36mEvent Load (10.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/add.html.erb:14
+  Rendered events/add.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 72ms (Views: 61.1ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-12-12 10:47:44 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (36.3ms)
+  Rendered events/index.html.erb within layouts/application (56.5ms)
+Completed 200 OK in 96ms (Views: 95.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2019-12-12 10:47:46 +0900
+Processing by EventsController#new as HTML
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (22.0ms)
+  Rendered events/new.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 72ms (Views: 70.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2019-12-12 11:02:37 +0900
+Processing by EventsController#index as HTML
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/views/events/index.html.erb:16
+  Rendered simple_calendar/_month_calendar.html.erb (39.1ms)
+  Rendered events/index.html.erb within layouts/application (53.1ms)
+Completed 200 OK in 112ms (Views: 110.5ms | ActiveRecord: 0.2ms)
+
+

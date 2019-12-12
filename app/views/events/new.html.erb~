@@ -1,0 +1,40 @@
+<h1>New Event</h1>
+
+<%= render 'form', event: @event %>
+
+<%= link_to 'Back', events_path %>
+
+<%= form_for(@form, url: events_path, method: :post) do |fb| %>
+<table class="table">
+<thead>
+  <tr>
+    <th width="60px">登録</th>
+    <th>予定名</th>
+    <th>開始日時</th>
+    <th>開催場所</th>
+  </tr>
+</thead>
+<tbody class="bulk-registration-form">
+<%= fb.fields_for :events do |f| %>
+  <tr class="item">
+  <td class="text-center">
+  <%= f.check_box :check, class: 'top10 registration-checkbox' %>
+  </td>
+  <td>
+  <%= f.text_field :name, class: 'form-control' %>
+  </td>
+  <td>
+  <%= f.text_field :start_time, class: 'form-control' %>
+  </td>
+  <td>
+  <%= f.text_field :place, class: 'form-control' %>
+  </td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
+<div class="text-center">
+<%= fb.submit '一括登録', class: 'btn btn-primary' %>
+</div>
+<% end %>

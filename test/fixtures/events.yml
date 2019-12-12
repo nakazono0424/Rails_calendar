@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_time: 2019-12-09 12:52:18
+  place: MyString
+  check: false
+
+two:
+  name: MyString
+  start_time: 2019-12-09 12:52:18
+  place: MyString
+  check: false
